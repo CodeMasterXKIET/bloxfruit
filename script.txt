@@ -1,0 +1,170 @@
+local player = game:GetService("Players").LocalPlayer 
+local playerGui = player:FindFirstChildOfClass("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui") 
+screenGui.Parent = playerGui
+
+local frame = Instance.new("Frame") 
+frame.Parent = screenGui 
+frame.Size = UDim2.new(0, 500, 0, 290) 
+frame.Position = UDim2.new(0, 100, 0, 0) 
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+frame.Visible = false
+
+local scrollingFrame = Instance.new("ScrollingFrame")
+scrollingFrame.Parent = frame
+scrollingFrame.Size = UDim2.new(0, 500, 0, 259)
+scrollingFrame.Position = UDim2.new(0, 0, 0, 31)
+scrollingFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 3200)
+scrollingFrame.ScrollBarThickness = 10
+
+local buttonNames = {
+
+"Auto Farm Level - [ OFF ]",
+"Auto Farm Mastery - [ OFF ]",
+"Auto Farm Bone - [ OFF ]",
+"Auto Farm Dragon Scales - [ OFF ]",
+"Auto Up v2 - [ OFF ]",
+"Auto Up v3 - [ OFF ]",
+"Auto Up v4 - [ OFF ]",
+"Auto Kill User - [ OFF ]",
+"Auto Find Gear - [ OFF ]",
+"Auto Find Fruit - [ OFF ]",
+"Auto Random Fruit - [ OFF ]",
+"Auto Storage Fruit - [ OFF ]",
+"Auto Farm Raid - [ OFF ]",
+"Auto Get All Item - [ OFF ]",
+"Auto CDK - [ OFF ]",
+"Auto Yama - [ OFF ]",
+"Auto Tushita - [ OFF ]",
+"Auto Shishui - [ OFF ]",
+"Auto Wando - [ OFF ]",
+"Auto Saddi - [ OFF ]",
+"Auto TTK - [ OFF ]",
+"Auto Dark Dagger - [ OFF ]",
+"Auto Rengoku - [ OFF ]",
+"Auto Saber - [ OFF ]",
+"Auto Spikey Trident - [ OFF ]",
+"Auto Pole v1 - [ OFF ]",
+"Auto Pole v2 - [ OFF ]",
+"Auto Triple Katana - [ OFF ]",
+"Auto Gravity Cane - [ OFF ]",
+"Auto Jitte - [ OFF ]",
+"Auto Bisento - [ OFF ]",
+"Auto Longsword - [ OFF ]",
+"Auto Twin Hooks - [ OFF ]",
+"Auto Midnight Blade - [ OFF ]",
+"Auto Dragon Trident - [ OFF ]",
+"Auto Soul Cane - [ OFF ]",
+"Auto Trident - [ OFF ]",
+"Auto Phoenix Blade - [ OFF ]",
+"Auto Shark Anchor - [ OFF ]",
+"Auto Dark Step - [ OFF ]",
+"Auto Dark Step V2 - [ OFF ]",
+"Auto Electro - [ OFF ]",
+"Auto Electro V2 - [ OFF ]",
+"Auto Water Kung Fu - [ OFF ]",
+"Auto Water Kung Fu V2 - [ OFF ]",
+"Auto Dragon Breath - [ OFF ]",
+"Auto Dragon Breath V2 - [ OFF ]",
+"Auto Superhuman - [ OFF ]",
+"Auto Superhuman V2 - [ OFF ]",
+"Auto Death Step - [ OFF ]",
+"Auto Death Step V2 - [ OFF ]",
+"Auto Sharkman Karate - [ OFF ]",
+"Auto Sharkman Karate V2 - [ OFF ]",
+"Auto Electric Claw - [ OFF ]",
+"Auto Electric Claw V2 - [ OFF ]",
+"Auto Dragon Talon - [ OFF ]",
+"Auto Dragon Talon V2 - [ OFF ]",
+"Auto Godhuman - [ OFF ]",
+"Auto Godhuman V2 - [ OFF ]",
+"Auto Sanguine Art - [ OFF ]",
+"Auto Sanguine Art V2 - [ OFF ]",
+"Auto Dark Coat - [ OFF ]",
+"Auto Pale Scarf - [ OFF ]",
+"Auto Valkyrie Helm - [ OFF ]",
+"Auto Hunter Cape - [ OFF ]",
+"Auto Ghoul Mask - [ OFF ]",
+"Auto Bandana (Black) - [ OFF ]",
+"Auto Bandana (Red) - [ OFF ]",
+"Auto Bandana (Green) - [ OFF ]",
+"Auto Bandana (Blue) - [ OFF ]",
+"Auto Lei - [ OFF ]",
+"Auto Holy Crown - [ OFF ]",
+"Auto Golden Sunhat - [ OFF ]",
+"Auto Bear Ears - [ OFF ]",
+"Auto Party Hat - [ OFF ]",
+"Auto Santa Hat - [ OFF ]",
+"Auto Top Hat - [ OFF ]",
+"Auto Warrior Helmet - [ OFF ]",
+"Auto Usoap's Hat - [ OFF ]",
+"Auto Marine Cap - [ OFF ]",
+"Auto Pilot Helmet - [ OFF ]",
+"Auto Zebra Cap - [ OFF ]",
+"Auto Pretty Helmet - [ OFF ]",
+"Auto Cool Shades - [ OFF ]",
+"Auto Coven Cape - [ OFF ]",
+"Auto Pumpkin Head - [ OFF ]",
+"Auto Elf Hat - [ OFF ]",
+"Auto Musketeer Hat - [ OFF ]",
+"Auto Bear Hat - [ OFF ]",
+"Auto Cupid Cloak - [ OFF ]",
+"Auto Angel Wings - [ OFF ]",
+"Auto Demon Wings - [ OFF ]",
+"Auto Black Spikey Coat - [ OFF ]",
+"Auto White Spikey Coat - [ OFF ]",
+"Auto Red Spikey Coat - [ OFF ]",
+"Auto Blue Spikey Coat - [ OFF ]",
+"Auto Green Spikey Coat - [ OFF ]",
+"Auto Purple Spikey Coat - [ OFF ]",
+"Auto Dark Fragment - [ OFF ]",
+"Auto Mirror Fractal - [ OFF ]",
+"Auto Conjured Cocoa - [ OFF ]",
+"Auto Dragon Scale - [ OFF ]",
+"Auto Meteorite - [ OFF ]",
+"Auto Alucard Fragment - [ OFF ]",
+"Auto Scrap Metal - [ OFF ]",
+"Auto Leather - [ OFF ]",
+"Auto Bones - [ OFF ]",
+"Auto Ectoplasm - [ OFF ]",
+"Auto Fish Tail - [ OFF ]",
+"Auto Gunpowder - [ OFF ]",
+"Auto Radioactive Material - [ OFF ]",
+"Auto Mystic Droplet - [ OFF ]",
+"Auto Angel Wings - [ OFF ]",
+"Auto Vampire Fang - [ OFF ]",
+"Auto Magma Ore - [ OFF ]",
+"Auto Summon Chip - [ OFF ]",
+"Auto Leviathan Heart - [ OFF ]",
+"Auto Sea Beast Tooth - [ OFF ]",
+"Auto Electric Fragment - [ OFF ]",
+  "Auto ESP Players - [ OFF ]",
+    "Auto ESP Fruits - [ OFF ]",
+    "Auto ESP Chests - [ OFF ]",
+    "Auto ESP NPCs - [ OFF ]",
+    "Auto ESP Sea Beasts - [ OFF ]",
+
+}
+
+for i, name in ipairs(buttonNames) do
+    local button = Instance.new("TextButton")
+    button.Parent = scrollingFrame
+    button.Size = UDim2.new(0, 490, 0, 50)
+    button.Position = UDim2.new(0, 0, 0, (i - 1) * 51)
+    button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.Text = name
+    button.Font = Enum.Font.SourceSansBold
+    button.TextSize = 20
+    button.TextXAlignment = Enum.TextXAlignment.Left
+    
+    button.MouseButton1Click:Connect(function()
+        if string.find(button.Text, "OFF") then
+            button.Text = string.gsub(button.Text, "OFF", "ON")
+        else
+            button.Text = string.gsub(button.Text, "ON", "OFF")
+        end
+    end)
+end
