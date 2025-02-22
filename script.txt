@@ -16,7 +16,7 @@ scrollingFrame.Parent = frame
 scrollingFrame.Size = UDim2.new(0, 500, 0, 259)
 scrollingFrame.Position = UDim2.new(0, 0, 0, 31)
 scrollingFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 3200)
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 5000)
 scrollingFrame.ScrollBarThickness = 10
 
 local buttonNames = {
